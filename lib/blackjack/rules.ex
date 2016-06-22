@@ -2,11 +2,7 @@ defmodule Blackjack.Rules do
   alias Blackjack.Rules
 
   def run(game, inputs) do
-    Enum.reduce(rules, game, run_rule(inputs))
-  end
-
-  defp run_rule(inputs) do
-    &run_rule(inputs, &1, &2)
+    Enum.reduce(rules, game, &run_rule(inputs, &1, &2))
   end
 
   defp run_rule(inputs, rule, game) do
